@@ -1,5 +1,5 @@
 
-const { SignUpModel, SignInModel, ForgotPasswordModel, ChangePasswordModel } = require('../models/authentication.model')
+const { SignUpModel, SignInModel, ForgotPasswordModel, ChangePasswordModel,SendOtpModel,verifyOtp } = require('../models/authentication.model')
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -40,23 +40,40 @@ const SignInController = async (req, res) => {
     }
 }
 
-const ForgotPasswordController = async (req, res) => {
-    const result = await ForgotPasswordModel(req.body)
-    if (result.modifiedCount == 1) {
-        res.send({ message: "Sucessfully Changed Password" })
-    }
-    else if (result.modifiedCount == 0) {
-        res.send({ message: `User ${req.body.username} not found` })
+const SendOtpController = async (req, res) => {
+    const result = await SendOtpModel(req)
+    if (result?.error == true) {
+        res.status(400).send({ message: `User with mail ${req.body.email} not found.`})
     }
     else {
-        res.status(400).send(result)
+        res.status(200).send({ message: `OPT sent to ${req.body.email}.`})
+    }
+}
+
+const VerifyOtpController = async (req, res) => {
+    const result = await verifyOtp(req)
+    if (result?.error == true) {
+        res.status(400).send({ message: `Invalid OTP`})
+    }
+    else {
+        res.status(200).send({ message: `OTP Verified`})
+    }
+}
+
+const ForgotPasswordController = async (req, res) => {
+    const result = await ForgotPasswordModel(req)
+    if (result?.error == true) {
+        res.status(400).send({ message: `No user found with mail ${req.body.email}`})
+    }
+    else {
+        res.status(200).send({ message: `Please proceed to ${req.body.email} to change password`})
     }
 }
 
 const ChangePasswordController = async (req, res) => {
     const result = await ChangePasswordModel(req.body)
     if (result.modifiedCount == 1) {
-        res.send({ message: "Sucessfully Changed Password" })
+        res.send({ message: "Password chnaged successfully" })
     }
     else if (result.modifiedCount == 0) {
         res.send({ message: `User ${req.body.username} not found` })
@@ -67,4 +84,4 @@ const ChangePasswordController = async (req, res) => {
 }
 
 
-module.exports = { SignInController, SignUpController, VerifyController, ForgotPasswordController, ChangePasswordController }
+module.exports = { SignInController, SignUpController, VerifyController, ForgotPasswordController, ChangePasswordController,SendOtpController,VerifyOtpController }
