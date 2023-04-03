@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Booking_schema = new mongoose.Schema({
     packageId: String,
     packageName: String,
+    userId: String,
     name: String,
     email: String,
     contactnumber: String,
@@ -58,6 +59,15 @@ const GetAllBookingModel = (req) => {
     })
 }
 
+const GetAllBookingByUserModel = (req) => {
+    return new Promise((resolve, reject) => {
+        Booking_model.find({ "userId" : req.params.user }, function (err, data) {
+            if (err) resolve({ status: 500, error: true, err: err })
+            else resolve({ status: 200, error: null, data: data })
+        })
+    })
+}
+
 
 const BookingDeleteModel = (req) => {
     return new Promise((resolve, reject) => {
@@ -75,4 +85,4 @@ const BookingDeleteModel = (req) => {
     })
 }
 
-module.exports = { NewBookingModel, BookingDeleteModel, GetAllBookingModel }
+module.exports = { NewBookingModel, BookingDeleteModel, GetAllBookingModel,GetAllBookingByUserModel}

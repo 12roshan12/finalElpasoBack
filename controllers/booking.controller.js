@@ -1,5 +1,5 @@
 
-const { NewBookingModel, BookingDeleteModel, GetAllBookingModel } = require('../models/booking.model')
+const { NewBookingModel, BookingDeleteModel, GetAllBookingModel,GetAllBookingByUserModel } = require('../models/booking.model')
 
 const NewBookingController = async (req, res) => {
     let result = await NewBookingModel(req)
@@ -31,5 +31,15 @@ const GetAllBookingController = async (req, res) => {
     }
 }
 
+const GetAllBookingByUserController = async (req, res) => {
+    let result = await GetAllBookingByUserModel(req)
+    if (result.error == null) {
+        res.status(result.status).send({ api_status: 'Success', data: result.data })
+    }
+    else {
+        res.status(result.status).send({ api_status: 'Error', error: result.err })
+    }
+}
 
-module.exports = { NewBookingController, BookingDeleteController, GetAllBookingController }
+
+module.exports = { NewBookingController, BookingDeleteController, GetAllBookingController,GetAllBookingByUserController }

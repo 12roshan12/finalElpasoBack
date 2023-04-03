@@ -30,7 +30,7 @@ const SignInController = async (req, res) => {
                     algorithm: "HS256",
                     expiresIn: '24h'
                 });
-                res.status(200).send({ success: true, token: token, user: result[0].username, role: result[0].role, id: result[0]._id });
+                res.status(200).send({ success: true, token: token, user: result[0].username,userMail: result[0].email, role: result[0].role, id: result[0]._id });
                 return
             }
         })

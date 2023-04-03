@@ -76,7 +76,7 @@ const BlogDeleteModel = (req) => {
 
 const GetAllBlogByUserModel = (req) => {
     return new Promise((resolve, reject) => {
-        Blog_model.find({ "author.name" : req.params.user }, function (err, data) {
+        Blog_model.find({ "_id" : req.params.user }, function (err, data) {
             if (err) resolve({ status: 500, error: true, err: err })
             else resolve({ status: 200, error: null, data: data })
         })
