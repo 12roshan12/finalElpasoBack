@@ -1,5 +1,5 @@
 
-const { NewTripModel, TripDeleteModel, GetAllTripModel, GetAllTripByIdModel } = require('../models/trip.model')
+const { NewTripModel, TripDeleteModel, GetAllTripModel, GetAllTripByIdModel,PostCommentModel } = require('../models/trip.model')
 
 const NewTripController = async (req, res) => {
     let result = await NewTripModel(req)
@@ -31,6 +31,16 @@ const GetAllTripByIdController = async (req, res) => {
     }
 }
 
+const PostCommentController = async (req, res) => {
+    let result = await PostCommentModel(req)
+    if (result.error == null) {
+        res.status(result.status).send({ api_status: 'Success',message:"Success"})
+    }
+    else {
+        res.status(result.status).send({ api_status: 'Error', message:"Error" })
+    }
+}
+
 
 const GetAllTripController = async (req, res) => {
     let result = await GetAllTripModel(req)
@@ -43,4 +53,4 @@ const GetAllTripController = async (req, res) => {
 }
 
 
-module.exports = { NewTripController, TripDeleteController, GetAllTripController, GetAllTripByIdController }
+module.exports = { NewTripController, TripDeleteController, GetAllTripController, GetAllTripByIdController,PostCommentController }

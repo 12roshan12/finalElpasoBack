@@ -91,11 +91,30 @@ const NewTripModel = (req) => {
     })
 }
 
+const PostCommentModel = (req) => {
+    return new Promise((resolve, reject) => {
+        trip_model.updateOne({ _id: req.body.tripId }, { $push: { "customerReview": req.body } }, function (err, data) {
+            if (err) {
+                resolve({ error: err, status: 400 })
+            }
+            else {
+                resolve({ error: null, status: 200 })
+            }
+        })
+    })
+}
+
 const GetAllTripByIdModel = (req) => {
     return new Promise((resolve, reject) => {
         trip_model.findById({ _id: req.params.id }, function (err, data) {
             if (err) resolve({ status: 500, error: true, err: err })
-            else resolve({ status: 200, error: null, data: data })
+            else {
+                resolve({ status: 200, error: null, data: data })
+                trip_model.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'totalViews': 1 } },{new: true}, function (err, data) {
+                    if (err) console.log(err)
+                    else console.log(data)
+                })
+            }
         })
     })
 }
@@ -126,4 +145,4 @@ const TripDeleteModel = (req) => {
     })
 }
 
-module.exports = { NewTripModel, TripDeleteModel, GetAllTripModel, GetAllTripByIdModel }
+module.exports = { NewTripModel, TripDeleteModel, GetAllTripModel, GetAllTripByIdModel, PostCommentModel }

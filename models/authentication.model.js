@@ -44,7 +44,6 @@ const SendOtpModel = (req) => {
                 }
                 else {
                     let otp = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
-                    console.log(otp)
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
@@ -110,7 +109,6 @@ const verifyOtp = (req) => {
 
 const ForgotPasswordModel = (req) => {
     return new Promise((resolve, reject) => {
-        console.log(req.body)
         User_model.findOne({ email: req.body.email }, function (err, data) {
             if (err) {
                 resolve(err)
@@ -120,9 +118,7 @@ const ForgotPasswordModel = (req) => {
                     resolve({ error: true })
                 }
                 else {
-                    console.log(data)
                     let otp = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
-                    console.log(otp)
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
