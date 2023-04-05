@@ -5,8 +5,12 @@ const Team_schema = new mongoose.Schema({
     image: { type: String, required: true },
     bio: { type: String, required: true },
     createdby: String,
+    facebook: { type: String, default: '' },
+    instagram: { type: String, default: '' },
+    twitter: { type: String, default: '' },
+    profession: { type: String, default: '' },
     updatedby: String,
-    status: {type:Boolean,default:true},
+    status: { type: Boolean, default: true },
     createdon: { type: Date, default: Date.now() },
     updatedon: { type: Date, default: Date.now() }
 })
