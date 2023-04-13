@@ -20,7 +20,7 @@ const Booking_schema = new mongoose.Schema({
     updatedon: { type: Date, default: Date.now() }
 })
 
-const Booking_model = mongoose.model('Booking', Booking_schema)
+const Booking_model = mongoose.models.Booking || mongoose.model('Booking', Booking_schema);
 
 const NewBookingModel = (req) => {
     return new Promise(async (resolve, reject) => {
@@ -85,4 +85,4 @@ const BookingDeleteModel = (req) => {
     })
 }
 
-module.exports = { NewBookingModel, BookingDeleteModel, GetAllBookingModel,GetAllBookingByUserModel}
+module.exports = { NewBookingModel, BookingDeleteModel, GetAllBookingModel,GetAllBookingByUserModel,Booking_model}

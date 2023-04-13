@@ -6,6 +6,7 @@ const Blog_schema = new mongoose.Schema({
     image: { type: String, required: true },
     description: { type: String, required: true },
     category: { type: String },
+    isGuidline: { type: Boolean, default: false },
     trip: { type: String },
     author: {
         id: { type: String },
@@ -33,8 +34,8 @@ const NewBlogModel = (req) => {
                 else {
                     resolve({ status: 200, error: null, data: data, message: "Blog Added Successfully" })
                     User_model.findOneAndUpdate({ _id: req.body.author.id }, { $inc: { 'blogPosted': 1 } }, { new: true }, function (err, data) {
-                        if (err) console.log(err)
-                        else console.log(data)
+                        if (err) console.log("ccc")
+                        else console.log("ddd")
                     })
                 }
             })
@@ -70,11 +71,11 @@ const BlogDeleteModel = (req) => {
     return new Promise((resolve, reject) => {
 
         Blog_model.findOne({ _id: req.params.id }, function (err, data) {
-            if (err) console.log(err)
+            if (err) console.log("eee")
             else {
                 User_model.findOneAndUpdate({ _id: data?.author?.id }, { $inc: { 'blogPosted': -1 } }, { new: true }, function (err, data) {
-                    if (err) console.log(err)
-                    else console.log(data)
+                    if (err) console.log("fff")
+                    else console.log("ggg")
                 })
 
                 Blog_model.deleteOne({ _id: req.params.id }, function (err, data) {
@@ -109,8 +110,8 @@ const GetAllBlogByIdModel = (req) => {
             else {
                 resolve({ status: 200, error: null, data: data })
                 Blog_model.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'views': 1 } }, { new: true }, function (err, data) {
-                    if (err) console.log(err)
-                    else console.log(data)
+                    if (err) console.log("hhh")
+                    else console.log("iii")
                 })
             }
         })
