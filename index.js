@@ -15,6 +15,7 @@ app.use(fileUpload());
 app.use('/api/category', require('./routes/category.route'))
 app.use('/api/team', require('./routes/team.route'))
 app.use('/api/notice', require('./routes/notice.route'))
+app.use('/api/event', require('./routes/event.route'))
 app.use('/api/trip', require('./routes/trip.route'))
 app.use('/api/query', require('./routes/query.route'))
 app.use('/api/response', require('./routes/response.route'))
