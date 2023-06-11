@@ -10,6 +10,10 @@ const trip_schema = new mongoose.Schema({
     price: { type: String },
     isSpecialOffer: { type: Boolean, default: false },
     offerPrice: String,
+    pax2Price: String,
+    pax5price: String,
+    pax15price: String,
+    pax16price: String,
     summary: {
         duration: String,
         destination: String,
@@ -19,13 +23,24 @@ const trip_schema = new mongoose.Schema({
         maxaltitude: String,
         bestSeason: String,
     },
+    tripHighlight: { type: [] },
     description: { type: String },
     itinerary: {
         description: { type: String },
+      
         details: [
             {
                 head: { type: String },
                 headDetails: { type: String },
+                mode: { type: String },
+                routeItinerary: { type: String },
+                elevation: { type: String },
+                duration: { type: String },
+                overnight: { type: String },
+                included: { type: String },
+                activity: { type: String },
+                activityDuration: { type: String },
+                accomodation: { type: String },
             }
         ]
     },
