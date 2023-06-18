@@ -5,6 +5,7 @@ const trip_schema = new mongoose.Schema({
     name: { type: String },
     bannerImage: { type: String },
     tripImage: { type: String },
+    mapImage: { type: String },
     video: { type: String },
     imageGallery: [],
     price: { type: String },
@@ -12,6 +13,7 @@ const trip_schema = new mongoose.Schema({
     offerPrice: String,
     pax2Price: String,
     pax5price: String,
+    pax10price: String,
     pax15price: String,
     pax16price: String,
     summary: {
@@ -22,6 +24,10 @@ const trip_schema = new mongoose.Schema({
         groupSize: String,
         maxaltitude: String,
         bestSeason: String,
+        difficulty: String,
+        meals: String,
+        accomodation: String,
+        activities: String,
     },
     tripHighlight: { type: [] },
     description: { type: String },
@@ -30,21 +36,22 @@ const trip_schema = new mongoose.Schema({
       
         details: [
             {
-                head: { type: String },
-                headDetails: { type: String },
-                mode: { type: String },
-                routeItinerary: { type: String },
-                elevation: { type: String },
-                duration: { type: String },
-                overnight: { type: String },
-                included: { type: String },
-                activity: { type: String },
-                activityDuration: { type: String },
-                accomodation: { type: String },
+                head: { type: String , default:null },
+                headDetails: { type: String , default:null },
+                mode: { type: String , default:null },
+                routeItinerary: { type: String , default:null },
+                elevation: { type: String , default:null },
+                duration: { type: String , default:null },
+                overnight: { type: String , default:null },
+                included: { type: String , default:null },
+                activity: { type: String , default:null },
+                activityDuration: { type: String , default:null },
+                accomodation: { type: String , default:null },
             }
         ]
     },
     inclusion: { type: [] },
+    optionalInclusion: { type: [] },
     exclusion: { type: [] },
     aboutTrip: [
         {
