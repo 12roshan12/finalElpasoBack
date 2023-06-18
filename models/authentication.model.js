@@ -47,8 +47,8 @@ const SendOtpModel = (req) => {
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
-                            user: 'roshansharma7504@gmail.com',
-                            pass: 'hzlrgznabzofikmn'
+                            user: 'inviernonepal79@gmail.com',
+                            pass: 'ikezjyjknmojxzun'
                         }
                     });
 
@@ -122,14 +122,14 @@ const ForgotPasswordModel = (req) => {
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
-                            user: 'roshansharma7504@gmail.com',
-                            pass: 'hzlrgznabzofikmn'
+                            user: 'inviernonepal79@gmail.com',
+                            pass: 'ikezjyjknmojxzun'
                         }
                     });
 
                     var mailOptions = {
                         from: 'ElpasoAdmin',
-                        to: 'roshansharma7501@gmail.com',
+                        to: req.body.email,
                         subject: 'Greetings from  Elpaso Adventure ',
                         html:
                             `<div class="container"

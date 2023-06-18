@@ -4,8 +4,8 @@ var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'roshansharma7504@gmail.com',
-        pass: 'hzlrgznabzofikmn'
+        user: 'inviernonepal79@gmail.com',
+        pass: 'ikezjyjknmojxzun'
     }
 });
 
@@ -46,7 +46,7 @@ const NewQueryModel = (req) => {
 
                     var mailOptions = {
                         from: 'ElpasoAdmin',
-                        to: 'roshansharma7504@gmail.com',
+                        to: 'inviernonepal79@gmail.com',
                         subject: 'New Enquiry Alert',
                         html:
                             `  <div>

@@ -2,9 +2,10 @@ var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'roshansharma7504@gmail.com',
-        pass: 'hzlrgznabzofikmn'
+        user: 'inviernonepal79@gmail.com',
+        pass: 'ikezjyjknmojxzun'
     }
+    
 });
 
 const { Booking_model } = require('../models/booking.model')
