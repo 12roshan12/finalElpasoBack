@@ -10,6 +10,7 @@ const trip_schema = new mongoose.Schema({
     imageGallery: [],
     price: { type: String },
     isSpecialOffer: { type: Boolean, default: false },
+    isSpanish: { type: Boolean, default: false },
     offerPrice: String,
     pax2Price: String,
     pax5price: String,
