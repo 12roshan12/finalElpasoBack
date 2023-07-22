@@ -57,7 +57,6 @@ const NewQueryModel = (req) => {
                         <p>Client Address:${req.body.address}</p>
                         <p>Total Traveller:${req.body.totalTraveller}</p>
                         <p>Expected Date:${req.body.date}</p>
-                        <p>Expected price:${req.body.expectedPrice}</p>
                         <p>Custom message:${req.body.message}</p>
         
           </div>`

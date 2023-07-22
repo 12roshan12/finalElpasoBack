@@ -54,6 +54,7 @@ const trip_schema = new mongoose.Schema({
     inclusion: { type: [] },
     optionalInclusion: { type: [] },
     exclusion: { type: [] },
+    itemsYouNeedToBring: { type: [] },
     aboutTrip: [
         {
             head: { type: String },

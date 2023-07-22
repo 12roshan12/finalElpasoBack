@@ -56,7 +56,6 @@ const NewBookingModel = (req) => {
                         <p>Client Address:${req.body.address}</p>
                         <p>Total Traveller:${req.body.totalTraveller}</p>
                         <p>Expected Date:${req.body.date}</p>
-                        <p>Expected price:${req.body.price}</p>
                         <p>Custom message:${req.body.message}</p>
         
           </div>`
